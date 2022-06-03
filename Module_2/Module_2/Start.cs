@@ -30,44 +30,14 @@ namespace Module_2
             TwoRoomApartment Fifteenth = new TwoRoomApartment(15, 8500, true);
             IRent[] entrance = new IRent[15] { First, Second, Third, Fourth, Fifth, Sixth, Seventh, Eighth, Ninth, Tenth, Eleventh, Twelfth, Thirteenth, Fourteenth, Fifteenth };
             ApartmentsForRent home1 = new ApartmentsForRent(entrance);
+            ConsoleService consoleService = new ConsoleService();
 
             apartment.Info();
             Console.WriteLine("___________________________________________________");
 
             while (flag)
             {
-                Console.WriteLine("Make your choice:\n1) All info of entrance\n2) Filter available apartments by price\n3) Filter available apartments by number of rooms\n4) Find By Price\n5) Rent\n6) Close the program"); 
-                string choise = Console.ReadLine();
-                switch (choise)
-                {
-                    case "1":
-                        home1.AllInfo();
-                        break;
-                    case "2":
-                        home1.FiltfilterByPrice();
-                        break;
-                    case "3":
-                        home1.FiltfilterByNumberOfRooms();
-                        break;
-                    case "4":
-                        Console.WriteLine("Enter the minimum price");
-                        string min = Console.ReadLine();
-                        Console.WriteLine("Enter the maximum price");
-                        string max = Console.ReadLine();
-                        home1.FindByPrice(Convert.ToInt32(min), Convert.ToInt32(max));
-                        break;
-                    case "5":
-                        Console.WriteLine("Enter the number of apartment");
-                        string number = Console.ReadLine();
-                        home1.Rent(Convert.ToInt32(number));
-                        break;
-                    case "6":
-                        flag = false;
-                        break;
-                    default:
-                        Console.WriteLine("Make a choice from the options\n");
-                        break;
-                }
+                consoleService.Do(flag, home1);
             }
         }
     }
